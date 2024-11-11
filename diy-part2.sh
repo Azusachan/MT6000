@@ -33,29 +33,5 @@
 git clone -b master https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
 git clone -b master https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
 
-# 更新
-# ./scripts/feeds update -a && ./scripts/feeds install -a
-
-##########
-# Modify the version number
-# sed -i "s/OpenWrt /Leopard build $(TZ=UTC-8 date "+%Y.%m.%d") @ OpenWrt /g" package/lean/default-settings/files/zzz-default-settings
-
-# Modify default theme
-# sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
-
-
-
-# Add kernel build user
-# [ -z $(grep "CONFIG_KERNEL_BUILD_USER=" .config) ] &&
-#     echo 'CONFIG_KERNEL_BUILD_USER="Leopard"' >>.config ||
-#     sed -i 's@\(CONFIG_KERNEL_BUILD_USER=\).*@\1$"Leopard"@' .config
-
-# Add kernel build domain
-# [ -z $(grep "CONFIG_KERNEL_BUILD_DOMAIN=" .config) ] &&
-#     echo 'CONFIG_KERNEL_BUILD_DOMAIN="GitHub Actions"' >>.config ||
-#     sed -i 's@\(CONFIG_KERNEL_BUILD_DOMAIN=\).*@\1$"GitHub Actions"@' .config
-
-
-# 删除lean里的百度文本（编译失败），增加百度PCS-web
-# rm -rf package/lean/baidupcs-web
-# git clone https://github.com/liuzhuoling2011/baidupcs-web.git package/lean/baidupcs-web
+rm -rf feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang feeds/packages/lang/golang
